@@ -43,7 +43,7 @@ terraform apply -auto-approve
 - This will create resources on AWS
 
 ## Step 4
-Creating docker container and index.html (ref. docker/Dockerfile and docker/index.html)
+Creating Dockerfile and index.html (ref. docker/Dockerfile and docker/index.html)
 
 ## Step 5
 Ansible script to deploy and run the nginx application on ec2
