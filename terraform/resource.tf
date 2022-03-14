@@ -51,7 +51,7 @@ resource "aws_security_group" "AUTOMATION_HERO_SG" {
 resource "aws_instance" "AUTOMATION_HERO_NGINX" {
   ami = "ami-0fb653ca2d3203ac1"
   instance_type = "t2.micro"
-  key_name = "test-ohio"
+  key_name = "automation-hero"
   security_groups = [aws_security_group.AUTOMATION_HERO_SG.name]
   associate_public_ip_address = true
   tags = {
