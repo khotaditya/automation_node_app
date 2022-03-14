@@ -1,0 +1,35 @@
+---
+- hosts: "AUTOMATION_HERO_NGINX"
+  become: yes
+  tasks:
+# ansible-playbook deploy-nginx.yml -i inventory
+    - name: install all required packages
+      script: install.sh
+
+    - name: Get docker repository
+      command: sudo apt-key fingerprint 0EBFCD88 && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+    - name: Update server
+      command: sudo apt-get update
+
+    - name: Install docker
+      command: sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+      
+    - name: run hello world image
+      command: docker run hello-world  
+
+    - name: copy docker files
+      become: true
+      copy:
+        src: '{{item}}'
+        dest: /home/ubuntu
+        owner: ubuntu
+        group: ubuntu
+        mode: 0755
+      loop:
+        - ../docker/Dockerfile
+        - ../docker/index.html
+        - start-docker.sh
+    
+    - name: create docker image and container
+      command: /bin/bash /home/ubuntu/start-docker.sh

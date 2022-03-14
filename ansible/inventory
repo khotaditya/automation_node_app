@@ -1,0 +1,2 @@
+[AUTOMATION_HERO_NGINX] 
+<ip from new ec2> ansible_user=ubuntu ansible_ssh_private_key_file=<path to private key to access ec2>
