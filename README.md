@@ -1,4 +1,4 @@
-# Automation hero tech assignment
+# Automation to create EC2 instance on AWS and start nginx server on it
 
 Following information provides an automated solution to create EC2 instance on AWS and run nginx webserver on EC2.
 
